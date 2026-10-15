@@ -50,7 +50,7 @@ The latest resume is served from portfolio/static/files/Omprakash_Chaure_Resume.
 
 ## Static hosting
 
-The generated static site is committed in `_site/` so a static host can publish it directly. For Cloudflare Pages, connect this repository, select the `main` production branch, leave the build command empty, and set the build output directory to `_site`. When portfolio source content changes, regenerate `_site/` with `python build_static_site.py` and commit both the source changes and generated output; Cloudflare Pages will publish the new version automatically.
+The generated static site is committed in `_site/` as a ready-to-publish copy. For automatic builds on Cloudflare Pages, connect this repository, select the `main` production branch, use `python -m pip install -r requirements.txt && python build_static_site.py` as the build command, and set the build output directory to `_site`. Cloudflare Pages will regenerate and publish the site whenever a change is pushed to `main`.
 
 ## Contact
 
