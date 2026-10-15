@@ -1,6 +1,2 @@
-Place your resume PDF file in this directory with the name:
-
-    omprakash_chaure_resume.pdf
-
-This file can be downloaded/viewed via the "Download Resume" button in the Hero section
-and the "Resume" link in the navigation bar.
+The latest resume is stored as Omprakash_Chaure_Resume.pdf in this directory.
+The portfolio's hero button and navigation link open this PDF.
