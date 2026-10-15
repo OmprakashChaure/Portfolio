@@ -48,6 +48,10 @@ Skills, projects, experience, education, and certifications are stored in portfo
 
 The latest resume is served from portfolio/static/files/Omprakash_Chaure_Resume.pdf and linked from the hero section and navigation.
 
+## Static hosting
+
+The generated static site is committed in `_site/` so a static host can publish it directly. For Cloudflare Pages, connect this repository, select the `main` production branch, leave the build command empty, and set the build output directory to `_site`. When portfolio source content changes, regenerate `_site/` with `python build_static_site.py` and commit both the source changes and generated output; Cloudflare Pages will publish the new version automatically.
+
 ## Contact
 
 - Email: omprakash.chaure03@gmail.com

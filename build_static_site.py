@@ -1,4 +1,4 @@
-"""Render the Django portfolio as static files for GitHub Pages."""
+"""Render the Django portfolio as static files for static hosting."""
 
 from __future__ import annotations
 
@@ -29,8 +29,7 @@ def main() -> None:
         shutil.rmtree(OUTPUT)
     OUTPUT.mkdir(parents=True, exist_ok=True)
     html = response.content.decode("utf-8")
-    # GitHub Pages project sites are served under /Portfolio/, so make the
-    # Django static URLs relative to the generated index page.
+    # Use relative asset paths so the site works from a static-host root.
     html = html.replace("/static/", "static/")
     (OUTPUT / "index.html").write_text(html, encoding="utf-8")
 
