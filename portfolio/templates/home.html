@@ -22,8 +22,13 @@
             </div>
         </div>
 
-        <div class="hero-visual" aria-label="Illustration of an applied AI system pipeline">
-            <div class="visual-topline"><span>SYSTEMS / 001—003</span><span class="live-indicator"><i></i> BUILDING</span></div>
+        <div class="hero-visual" aria-label="Explore how my projects turn inputs into outcomes">
+            <div class="visual-topline"><span>PROJECT PATHWAYS</span><span class="pathway-label">LLM APPLICATION</span></div>
+            <div class="pathway-controls" aria-label="Choose a project pathway" hidden>
+                <button type="button" data-pathway="jobquick" aria-pressed="true">JobQuick</button>
+                <button type="button" data-pathway="autodim" aria-pressed="false">Autodim</button>
+                <button type="button" data-pathway="vision" aria-pressed="false">Lip reading</button>
+            </div>
             <div class="neural-art">
                 <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
                 <svg class="network-lines" viewBox="0 0 520 400" role="img" aria-label="Connected nodes representing data flowing through an AI system">
@@ -36,15 +41,15 @@
                     </g>
                     <circle cx="290" cy="82" r="18" fill="#8ce8c8" fill-opacity=".08"/><circle cx="420" cy="118" r="26" fill="#84b7ff" fill-opacity=".08"/>
                 </svg>
-                <div class="art-label label-input"><span>01 / INPUT</span><b>Signal</b></div>
-                <div class="art-label label-model"><span>02 / MODEL</span><b>Learning</b></div>
-                <div class="art-label label-output"><span>03 / OUTPUT</span><b>Impact</b></div>
+                <div class="art-label label-input"><span>01 / INPUT</span><b>Résumé</b></div>
+                <div class="art-label label-model"><span>02 / MODEL</span><b>LLM + retrieval</b></div>
+                <div class="art-label label-output"><span>03 / OUTPUT</span><b>Job matches</b></div>
                 <div class="art-center"><span class="center-symbol">∿</span><small>DATA → DECISIONS</small></div>
             </div>
-            <div class="visual-caption"><span>Applied AI, engineered end to end.</span><span>LLM · CV · DEEP LEARNING</span></div>
+            <div class="pathway-description" aria-live="polite"><p id="pathway-description">JobQuick turns résumés into structured profiles and ranked job matches.</p></div>
+            <a class="pathway-link" href="#project-1">Explore JobQuick <span aria-hidden="true">↗</span></a>
         </div>
     </div>
-    <div class="hero-footnote"><span>SCROLL TO EXPLORE</span><span class="scroll-line"></span><span>01 / 06</span></div>
 </section>
 
 <section class="quick-stats" aria-label="Portfolio highlights">
@@ -57,7 +62,7 @@
 <section class="section about-section" id="about">
     <div class="section-shell about-layout">
         <div class="section-intro reveal">
-            <p class="section-kicker"><span>01</span> ABOUT</p>
+
             <h2>Engineering AI<br>for the <em>real world.</em></h2>
         </div>
         <div class="about-copy reveal">
@@ -74,18 +79,19 @@
 <section class="section projects-section" id="projects">
     <div class="section-shell">
         <div class="section-heading reveal">
-            <div><p class="section-kicker"><span>02</span> SELECTED WORK</p><h2>Projects with a <em>purpose.</em></h2></div>
+            <div><h2>Projects with a <em>purpose.</em></h2></div>
             <p class="heading-note">From the first data point to a working system, these projects explore how machine learning can solve concrete problems.</p>
         </div>
-        <div class="project-filters reveal" aria-label="Filter projects">
-            <button class="filter-btn active" data-filter="all">All work <span>03</span></button>
-            <button class="filter-btn" data-filter="nlp">LLM / NLP</button>
-            <button class="filter-btn" data-filter="dxf">CAD / Retrieval</button>
-            <button class="filter-btn" data-filter="opencv">Computer vision</button>
+        <div class="project-filters reveal" role="group" aria-label="Filter projects" hidden>
+            <button class="filter-btn active" data-filter="all" type="button" aria-pressed="true" aria-controls="projects-list">All work <span>03</span></button>
+            <button class="filter-btn" data-filter="nlp" type="button" aria-pressed="false" aria-controls="projects-list">LLM / NLP</button>
+            <button class="filter-btn" data-filter="dxf" type="button" aria-pressed="false" aria-controls="projects-list">CAD / Retrieval</button>
+            <button class="filter-btn" data-filter="opencv" type="button" aria-pressed="false" aria-controls="projects-list">Computer vision</button>
         </div>
-        <div class="projects-list">
+        <p class="filter-status sr-only" role="status"></p>
+        <div class="projects-list" id="projects-list">
             {% for project in projects %}
-            <article class="project-card reveal" data-tags="{{ project.tags|join:',' }}">
+            <article id="project-{{ forloop.counter }}" class="project-card reveal" data-tags="{{ project.tags|join:',' }}">
                 <div class="project-index">{{ forloop.counter|stringformat:"02d" }}<span> / 03</span></div>
                 <div class="project-main">
                     <div class="project-meta"><span class="project-type">{% if 'nlp' in project.tags %}LLM APPLICATION{% elif 'dxf' in project.tags %}COMPUTER-AIDED DESIGN{% else %}COMPUTER VISION{% endif %}</span><span class="status-pill {% if project.status == 'Completed' %}is-complete{% else %}is-progress{% endif %}"><i></i>{{ project.status }}</span></div>
@@ -96,9 +102,9 @@
                     </ul>
                     <div class="tech-list">{% for tech in project.technologies %}<span>{{ tech }}</span>{% endfor %}</div>
                 </div>
-                <div class="project-visual project-visual-{{ forloop.counter }}" aria-hidden="true">
+                <div class="project-visual project-visual-{{ forloop.counter }}" aria-hidden="true"><span class="diagram-label">SYSTEM CONCEPT</span>
                     {% if forloop.counter == 1 %}
-                    <div class="mini-window"><div class="window-top"><i></i><i></i><i></i><span>jobquick · resume parse</span></div><div class="match-label">RESUME EXTRACTION ACCURACY</div><div class="match-score">90<span>%+</span></div><div class="match-track"><i></i></div><div class="match-row"><b>SKILLS</b><span>Extracted</span></div><div class="match-row"><b>EXPERIENCE</b><span>Structured</span></div><div class="match-row"><b>JOB RESULTS</b><span>Ranked</span></div></div>
+                    <div class="mini-window"><div class="window-top"><span>RESUME → PROFILE → MATCH</span></div><div class="match-label">RESUME EXTRACTION ACCURACY</div><div class="match-score">90<span>%+</span></div><div class="match-track"><i></i></div><div class="match-row"><b>SKILLS</b><span>Extracted</span></div><div class="match-row"><b>EXPERIENCE</b><span>Structured</span></div><div class="match-row"><b>JOB RESULTS</b><span>Ranked</span></div></div>
                     {% elif forloop.counter == 2 %}
                     <div class="cad-sheet"><span class="cad-label">DXF / FEATURE RETRIEVAL</span><svg viewBox="0 0 300 230"><g fill="none" stroke="#83e5c4" stroke-width="1.5"><path d="M52 45h102v34H52zM88 79v65h99V79M88 112h-34v50h34M187 112h44v50h-44M52 162h179M154 45v-20h39"/><circle cx="120" cy="111" r="18"/><path d="M120 84v8m0 38v8m-27-27h8m38 0h8"/></g><g fill="#94a3ad" font-family="monospace" font-size="9"><text x="47" y="38">REF: 042</text><text x="204" y="105">kNN</text><text x="198" y="176">PLACEMENT</text><text x="42" y="184">GEOMETRY</text></g></svg><div class="cad-footer"><span>RETRIEVE → VALIDATE → PLACE</span><span>● LOCAL PIPELINE</span></div></div>
                     {% else %}
@@ -114,13 +120,12 @@
 <section class="section capabilities-section" id="skills">
     <div class="section-shell">
         <div class="section-heading reveal">
-            <div><p class="section-kicker"><span>03</span> TOOLKIT</p><h2>Built across the <em>stack.</em></h2></div>
+            <div><h2>Built across the <em>stack.</em></h2></div>
             <p class="heading-note">A practical toolkit for moving from raw data and model experiments to useful applications.</p>
         </div>
         <div class="skills-grid">
             {% for cat in skills %}
             <article class="skill-card reveal" data-delay="{{ forloop.counter0 }}">
-                <div class="skill-card-top"><span>0{{ forloop.counter }}</span><span class="skill-code">ML / AI</span></div>
                 <h3>{{ cat.category }}</h3>
                 <div class="skill-items">{% for skill in cat.skills %}<span>{{ skill }}</span>{% endfor %}</div>
             </article>
@@ -132,7 +137,7 @@
 <section class="section experience-section" id="experience">
     <div class="section-shell">
         <div class="section-heading reveal">
-            <div><p class="section-kicker"><span>04</span> EXPERIENCE</p><h2>Learning by <em>building.</em></h2></div>
+            <div><h2>Learning by <em>building.</em></h2></div>
             <p class="heading-note">Hands-on work bringing AI and computer vision into practical engineering products.</p>
         </div>
         <div class="experience-list">
@@ -150,7 +155,7 @@
 <section class="section education-section" id="education">
     <div class="section-shell">
         <div class="section-heading reveal">
-            <div><p class="section-kicker"><span>05</span> BACKGROUND</p><h2>Foundation &amp; <em>curiosity.</em></h2></div>
+            <div><h2>Foundation &amp; <em>curiosity.</em></h2></div>
         </div>
         <div class="background-grid">
             <div class="education-list">
@@ -165,8 +170,8 @@
 
 <section class="contact-section" id="contact">
     <div class="section-shell contact-layout">
-        <div class="contact-copy reveal"><p class="section-kicker"><span>06</span> NEXT STEP</p><h2>Let’s build something <em>useful.</em></h2><p>I’m interested in AI/ML engineering opportunities and thoughtful conversations about applied AI.</p></div>
-        <div class="contact-links reveal"><a class="contact-primary" href="mailto:{{ personal.email }}"><span>Start a conversation</span><b>↗</b><small>{{ personal.email }}</small></a><a href="{{ personal.github }}" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a><a href="{{ personal.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a><a href="{% static 'files/Omprakash_Chaure_Resume.pdf' %}" target="_blank" rel="noopener noreferrer">Résumé <span>↗</span></a></div>
+        <div class="contact-copy reveal"><h2>Let’s build something <em>useful.</em></h2><p>I’m interested in AI/ML engineering opportunities and thoughtful conversations about applied AI.</p></div>
+        <div class="contact-links reveal"><a class="contact-primary" href="mailto:{{ personal.email }}"><span>Let’s talk</span><b>↗</b><small>{{ personal.email }}</small></a><a href="{{ personal.github }}" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a><a href="{{ personal.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a><a href="{% static 'files/Omprakash_Chaure_Resume.pdf' %}" target="_blank" rel="noopener noreferrer">Résumé <span>↗</span></a></div>
     </div>
 </section>
 {% endblock %}

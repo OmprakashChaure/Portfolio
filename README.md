@@ -1,10 +1,12 @@
 # Omprakash Chaure - AI/ML Engineer Portfolio
 
-A responsive personal portfolio built with Django and Tailwind CSS. It presents Omprakash's education, AI/ML experience, projects, technical skills, and certifications.
+A responsive personal portfolio built with Django, CSS, and JavaScript. It presents Omprakash's education, AI/ML experience, projects, technical skills, and certifications.
 
 ## Portfolio status
 
-The application is ready to run locally. A public live-site URL has not been configured yet.
+Live on Cloudflare Pages: https://omprakash-portfolio.pages.dev/
+
+The portfolio includes interactive project pathways, accessible project filtering, natural scroll effects, and a reduced-motion layout. All project diagrams are explanatory illustrations. No live AI inference runs on the page.
 
 ## Profile
 
